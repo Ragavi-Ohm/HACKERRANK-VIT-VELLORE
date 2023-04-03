@@ -1,0 +1,30 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int n;
+    cin>>n;
+    int n1 = (int)(log2(n));
+   
+    
+   
+    string s=bitset<64>(n).to_string().substr(64 -n1-1);
+    
+    int num=s.length();
+   
+    int count=0;
+    for(int k=0;k<num;k++)
+    {
+        if((n & (1<<k))!=0)
+            count++;
+    }
+    cout<<count;
+    return 0;
+}
