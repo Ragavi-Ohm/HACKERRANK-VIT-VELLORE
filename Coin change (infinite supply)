@@ -1,0 +1,38 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int n,num,sum;
+    vector<int>v;
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        cin>>num;
+        v.push_back(num);
+    }
+    cin>>sum;
+    sort(v.begin(),v.end());
+    reverse(v.begin(),v.end());
+    int cnt=0;
+    int i=0;
+    while(i<n)
+    {
+        if(v[i]<=sum){
+        int k=sum/v[i];
+        cnt=cnt+k;
+        sum=sum-(k*v[i]);
+        }
+        i++;
+    }
+    if(sum!=0)
+        cnt=-1;
+    cout<<cnt;
+    return 0;
+}
