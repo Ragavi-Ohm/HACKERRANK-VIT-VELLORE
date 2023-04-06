@@ -1,0 +1,58 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include<bits/stdc++.h>
+using namespace std;
+
+bool static sec(const vector<int>&a,const vector<int>&b)
+{
+    if(a[0]<b[0])
+        return true;
+    else if(a[0]>b[0])
+        return false;
+    else if(a[2]<b[2])
+        return true;
+    return false;
+}
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */ 
+    int n1,n2,num;
+    vector<int>start,end,ans;
+    cin>>n1;
+    for(int i=0;i<n1;i++)
+    {
+        cin>>num;
+        start.push_back(num);
+    }
+    cin>>n2;
+    for(int i=0;i<n2;i++)
+    {
+        cin>>num;
+        end.push_back(num);
+    }
+    
+    vector<vector<int>>v(n1);
+    for(int i=0;i<n1;i++)
+    {
+        v[i]={end[i],start[i],i};
+    }
+    sort(v.begin(),v.end(),sec);
+    int en=v[0][0];
+    ans.push_back(v[0][2]);
+    for(int i=1;i<n1;i++)
+    {
+        if(v[i][1]>=en)
+        {
+            en=v[i][0];
+            ans.push_back(v[i][2]);
+        }
+    }
+    for(auto it:ans)
+    {
+        cout<<it<<" ";
+    }
+    
+    return 0;
+}
